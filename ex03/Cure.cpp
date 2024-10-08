@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 17:26:05 by belguabd          #+#    #+#             */
-/*   Updated: 2024/09/28 12:26:29 by belguabd         ###   ########.fr       */
+/*   Created: 2024/09/28 17:09:04 by belguabd          #+#    #+#             */
+/*   Updated: 2024/10/07 15:40:31 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Cure.hpp"
 
-Cat::Cat() : Animal("Cat")
+Cure::Cure() : AMateria("cure") {}
+
+Cure::Cure(const Cure &other)
 {
-    std::cout << "Default constructor called" << std::endl;
-};
-
-Cat &Cat::operator=(const Cat &other)
+    this->type = other.type;
+}
+Cure &Cure::operator=(const Cure &other)
 {
     if (this == &other)
         return (*this);
     this->type = other.type;
-    return (*this);
+    return *this;
+}
+Cure::~Cure() {}
+
+std::string const &Cure::getType() const
+{
+    return (this->type);
 }
 
-Cat::Cat(const Cat &other)
+AMateria *Cure::clone() const
 {
-    this->type = other.type;
+    Cure *m_pInstance = new Cure(*this);
+    return (m_pInstance);
 }
-void Cat::makeSound() const
-{
-    std::cout << "Meow" << std::endl;
-};
 
-Cat::~Cat()
+void Cure::use(ICharacter &target)
 {
-    std::cout << "Destructor of Cat called" << std::endl;
+    std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

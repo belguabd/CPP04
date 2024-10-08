@@ -2,7 +2,7 @@ FLAGS=c++  -Wall -Wextra -Werror -std=c++98
 
 NAME=Animal
 
-SRC=main.cpp Animal.cpp Dog.cpp Cat.cpp
+SRC=main.cpp Animal.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp 
 
 OBJ=$(SRC:.cpp=.o)
 
@@ -12,7 +12,7 @@ $(NAME): $(OBJ)
 	$(FLAGS) $(OBJ) -o $(NAME)
 
 
-%.o: %.cpp Animal.hpp Dog.hpp
+%.o: %.cpp Animal.hpp Dog.hpp Cat.hpp WrongCat.hpp WrongAnimal.hpp 
 	$(FLAGS) -c $< -o $@ 
 
 

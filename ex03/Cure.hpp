@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 17:26:26 by belguabd          #+#    #+#             */
-/*   Updated: 2024/09/28 12:32:19 by belguabd         ###   ########.fr       */
+/*   Created: 2024/09/28 17:07:49 by belguabd          #+#    #+#             */
+/*   Updated: 2024/10/05 16:01:42 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CURE_HPP
+#define CURE_HPP
 
+#include "ICharacter.hpp"
 
-#ifndef DOG_HPP
-#define DOG_HPP
-#include "Animal.hpp"
-
-class Dog : public Animal
+class Cure : public AMateria
 {
+
 public:
-    Dog();
-    Dog(const Dog &other);
-    Dog &operator=(const Dog &other);
-    ~Dog();
-    
-    void makeSound() const;
+    Cure();
+    Cure &operator=(const Cure &other);
+    Cure(const Cure &other);
+    ~Cure();
+
+    std::string const &getType() const;
+    AMateria *clone() const;
+    void use(ICharacter &target);
 };
 
 #endif

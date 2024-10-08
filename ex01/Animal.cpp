@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:26:42 by belguabd          #+#    #+#             */
-/*   Updated: 2024/10/04 19:04:39 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/10/08 16:08:08 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ Animal::Animal() : type("Undefined")
 
 Animal &Animal::operator=(const Animal &other)
 {
+    puts("animal");
     if (this != &other)
         return (*this);
     this->type = other.type;

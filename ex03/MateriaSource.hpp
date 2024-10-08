@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 17:26:26 by belguabd          #+#    #+#             */
-/*   Updated: 2024/09/28 12:32:19 by belguabd         ###   ########.fr       */
+/*   Created: 2024/09/29 18:29:38 by belguabd          #+#    #+#             */
+/*   Updated: 2024/10/07 19:04:39 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "IMateriaSource.hpp"
+#include "AMateria.hpp"
 
-
-#ifndef DOG_HPP
-#define DOG_HPP
-#include "Animal.hpp"
-
-class Dog : public Animal
+class MateriaSource : public IMateriaSource
 {
-public:
-    Dog();
-    Dog(const Dog &other);
-    Dog &operator=(const Dog &other);
-    ~Dog();
-    
-    void makeSound() const;
-};
+private:
+    AMateria *_storeMateria[4];
 
-#endif
+public:
+    MateriaSource();
+    MateriaSource(const MateriaSource &other);
+    MateriaSource & operator=(const MateriaSource &other);
+    ~MateriaSource();
+
+    void learnMateria(AMateria *);
+    AMateria *createMateria(std::string const &type);
+};

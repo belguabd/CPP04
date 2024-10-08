@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:26:05 by belguabd          #+#    #+#             */
-/*   Updated: 2024/09/28 12:26:29 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/10/05 17:18:00 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Cat::Cat() : Animal("Cat")
 {
+    this->brain = new Brain();
     std::cout << "Default constructor called" << std::endl;
 };
 
@@ -22,12 +23,14 @@ Cat &Cat::operator=(const Cat &other)
     if (this == &other)
         return (*this);
     this->type = other.type;
+    delete this->brain;
+    this->brain = new Brain(*other.brain);
     return (*this);
 }
 
 Cat::Cat(const Cat &other)
 {
-    this->type = other.type;
+    *this = other;
 }
 void Cat::makeSound() const
 {
@@ -36,5 +39,6 @@ void Cat::makeSound() const
 
 Cat::~Cat()
 {
+    delete this->brain;
     std::cout << "Destructor of Cat called" << std::endl;
 }

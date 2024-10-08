@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:26:12 by belguabd          #+#    #+#             */
-/*   Updated: 2024/09/26 17:39:07 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:32:27 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ class Cat : public Animal
         Cat();
         Cat(const Cat &other);
         Cat &operator=(const Cat &other);
-        void makeSound() const;
         ~Cat();
+        
+        void makeSound() const;
 };
 
 #endif

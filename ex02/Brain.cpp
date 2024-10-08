@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 17:26:05 by belguabd          #+#    #+#             */
-/*   Updated: 2024/09/28 12:26:29 by belguabd         ###   ########.fr       */
+/*   Created: 2024/09/26 19:57:42 by belguabd          #+#    #+#             */
+/*   Updated: 2024/10/05 12:53:54 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Brain.hpp"
 
-Cat::Cat() : Animal("Cat")
+Brain::Brain()
 {
-    std::cout << "Default constructor called" << std::endl;
-};
+    std::cout << "Default constructor called " << std::endl;
+}
+Brain::Brain(const Brain &other)
+{
+    for (size_t i = 0; i < 100; i++)
+        this->ideas[i] = other.ideas[i];
+}
 
-Cat &Cat::operator=(const Cat &other)
+Brain &Brain::operator=(const Brain &other)
 {
     if (this == &other)
         return (*this);
-    this->type = other.type;
+    for (size_t i = 0; i < 100; i++)
+        this->ideas[i] = other.ideas[i];
     return (*this);
 }
 
-Cat::Cat(const Cat &other)
+Brain::~Brain()
 {
-    this->type = other.type;
-}
-void Cat::makeSound() const
-{
-    std::cout << "Meow" << std::endl;
-};
-
-Cat::~Cat()
-{
-    std::cout << "Destructor of Cat called" << std::endl;
+    std::cout << "Destructor of Brain called" << std::endl;
 }

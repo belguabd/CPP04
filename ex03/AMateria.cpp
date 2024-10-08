@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 17:26:05 by belguabd          #+#    #+#             */
-/*   Updated: 2024/09/28 12:26:29 by belguabd         ###   ########.fr       */
+/*   Created: 2024/09/29 15:46:44 by belguabd          #+#    #+#             */
+/*   Updated: 2024/10/07 16:22:21 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "AMateria.hpp"
 
-Cat::Cat() : Animal("Cat")
-{
-    std::cout << "Default constructor called" << std::endl;
-};
-
-Cat &Cat::operator=(const Cat &other)
+AMateria &AMateria::operator=(const AMateria &other)
 {
     if (this == &other)
         return (*this);
@@ -25,16 +20,17 @@ Cat &Cat::operator=(const Cat &other)
     return (*this);
 }
 
-Cat::Cat(const Cat &other)
-{
-    this->type = other.type;
-}
-void Cat::makeSound() const
-{
-    std::cout << "Meow" << std::endl;
-};
+AMateria::AMateria() : type("unknown") {}
 
-Cat::~Cat()
+AMateria::AMateria(const AMateria &other) { this->type = other.type; }
+
+AMateria::AMateria(std::string const &type) : type(type) {}
+
+std::string const &AMateria::getType() const { return this->type; }
+
+void AMateria::use(ICharacter &target)
 {
-    std::cout << "Destructor of Cat called" << std::endl;
+    (void)target;
 }
+
+AMateria::~AMateria() {};   

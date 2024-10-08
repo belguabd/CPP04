@@ -1,40 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 17:26:05 by belguabd          #+#    #+#             */
-/*   Updated: 2024/09/28 12:26:29 by belguabd         ###   ########.fr       */
+/*   Created: 2024/09/28 17:03:54 by belguabd          #+#    #+#             */
+/*   Updated: 2024/10/08 16:18:45 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Ice.hpp"
 
-Cat::Cat() : Animal("Cat")
+Ice::Ice() : AMateria("ice") {}
+
+Ice::Ice(const Ice &other)
 {
-    std::cout << "Default constructor called" << std::endl;
-};
-
-Cat &Cat::operator=(const Cat &other)
+    this->type = other.type;
+}
+Ice &Ice::operator=(const Ice &other)
 {
     if (this == &other)
         return (*this);
     this->type = other.type;
-    return (*this);
+    return *this;
+}
+Ice::~Ice() {}
+
+
+std::string const &Ice::getType() const
+{
+    return (this->type);
 }
 
-Cat::Cat(const Cat &other)
+AMateria *Ice::clone() const
 {
-    this->type = other.type;
+    Ice *m_pInstance = new Ice(*this);
+    return (m_pInstance);
 }
-void Cat::makeSound() const
-{
-    std::cout << "Meow" << std::endl;
-};
 
-Cat::~Cat()
+void Ice::use(ICharacter &target)
 {
-    std::cout << "Destructor of Cat called" << std::endl;
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
